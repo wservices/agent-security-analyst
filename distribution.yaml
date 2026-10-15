@@ -1,5 +1,5 @@
 # Hermes profile distribution manifest for the Security Analyst role.
-# Install:  hermes profile install https://$GITLAB_HOST/agents/cybersecurity/security-analyst.git
+# Install:  hermes profile install https://github.com/wservices/agent-security-analyst.git
 # Fields validated against hermes_cli/profile_distribution.py (Hermes 0.21.x).
 
 name: security-analyst

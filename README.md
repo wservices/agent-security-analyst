@@ -46,7 +46,7 @@ This repo is a **Hermes profile distribution** (`distribution.yaml` + `SOUL.md` 
 `skills/`). Install it as its own agent profile:
 
 ```bash
-hermes profile install "https://gitlab.wservices.ch/agents/cybersecurity/security-analyst.git"
+hermes profile install "https://github.com/wservices/agent-security-analyst.git"
 hermes -p security-analyst chat              # run the analyst
 hermes profile update security-analyst       # re-pull later; keeps your .env/memory
 ```
