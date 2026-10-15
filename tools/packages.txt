@@ -1,0 +1,19 @@
+# security-analyst role tool layer (APT). Many core tools come from the shared
+# base image (agents/shared/cybersecurity/security-tooling); listed here are the
+# role-specific additions plus the core tools this role depends on, so the
+# manifest is self-sufficient if the base image is not used.
+#
+# Core (also in base image):
+jq
+ripgrep
+tshark
+tcpdump
+nmap
+whois
+dnsutils          # provides dig
+openssl
+# Role-specific additions:
+suricata          # IDS alerts / rule testing
+yara              # pattern-match files/memory strings
+# Optional (NOT installed here): zeek — unreliable in Kali APT; install via the
+# upstream openSUSE Build Service repo or source if a workflow needs it.

@@ -1,0 +1,10 @@
+jq
+rg
+tshark
+tcpdump
+nmap
+whois
+dig
+openssl
+suricata
+yara
