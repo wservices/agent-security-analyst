@@ -56,6 +56,12 @@ On install, Hermes generates a `.env.EXAMPLE` from `distribution.yaml`'s
 forward the names into the Kali sandbox via `docker_forward_env`. `config.yaml`
 is **not** overwritten (your model/provider is preserved).
 
+**See [`docs/ENVIRONMENT.md`](docs/ENVIRONMENT.md)** for every variable this role
+reads — required/optional, defaults, a copy-ready `.env` template, the
+`docker_forward_env` snippet, and the secret-handling rules. That file is
+generated from `distribution.yaml` (`agents/platform/scripts/gen_env_doc.py`), so
+it never drifts from what the role actually uses.
+
 Shared skills (`cve-research`, `security-tooling` under `skills/security/…`) are
 pinned and installed separately — see `agents/platform/docs/GITLAB-ARCHITECTURE.md`
 and `HERMES-INTEGRATION.md` §6 for the profile + shared-skill mechanism.
