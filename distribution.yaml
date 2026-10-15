@@ -1,0 +1,49 @@
+# Hermes profile distribution manifest for the Security Analyst role.
+# Install:  hermes profile install git@$GITLAB_HOST:agents/cybersecurity/security-analyst.git
+# Fields validated against hermes_cli/profile_distribution.py (Hermes 0.21.x).
+
+name: security-analyst
+version: 0.1.0
+description: >-
+  SOC analyst: triages Wazuh alerts, investigates Linux/network logs, extracts
+  and enriches IOCs, maps to MITRE ATT&CK, and writes evidence-backed reports.
+  Escalates confirmed incidents to the Incident Responder. Read-only; no response
+  actions. (Used by the kanban decomposer to route SOC/triage/log-investigation
+  tasks to this profile.)
+hermes_requires: ">=0.21.0"
+author: Pascal (pascal), Hermes Agent
+license: MIT
+
+# config.yaml is intentionally NOT distribution-owned, so installing this role
+# never overwrites the user's model/provider choice. The role layers SOUL.md,
+# skills/, and the env vars below onto the user's base config.
+distribution_owned:
+  - SOUL.md
+  - skills
+  - distribution.yaml
+
+# Credentials the role needs. Hermes generates a .env.EXAMPLE from these; the
+# user fills a real .env (never committed) and forwards the names via
+# docker_forward_env into the Kali sandbox. Values are never logged.
+env_requires:
+  - name: WAZUH_API_URL
+    required: false
+    description: "Wazuh Server API base URL, e.g. https://wazuh.internal:55000"
+  - name: WAZUH_API_USER
+    required: false
+    description: "Read-only Wazuh Server API user (RBAC: *:read only)"
+  - name: WAZUH_API_PASSWORD
+    required: false
+    description: "Password for the read-only Wazuh Server API user"
+  - name: WAZUH_INDEXER_URL
+    required: false
+    description: "Wazuh Indexer (OpenSearch) URL, e.g. https://wazuh.internal:9200"
+  - name: WAZUH_INDEXER_USER
+    required: false
+    description: "Read-only Indexer user (read/search on wazuh-alerts-*)"
+  - name: WAZUH_INDEXER_PASSWORD
+    required: false
+    description: "Password for the read-only Indexer user"
+  - name: NVD_API_KEY
+    required: false
+    description: "Optional NVD API key (raises CVE-lookup rate limit 5->50/30s)"

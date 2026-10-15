@@ -40,17 +40,26 @@ false-positive ID, escalation) are tracked as planned in
 is optional (not reliably in Kali apt). Live capture needs `--cap-add NET_RAW`
 (never `--privileged`). See `tools/README.md`.
 
-## Install into Hermes
+## Install into Hermes (as a profile)
 
-Clone and trust the repo so its skills + scripts load project-locally:
+This repo is a **Hermes profile distribution** (`distribution.yaml` + `SOUL.md` +
+`skills/`). Install it as its own agent profile:
 
 ```bash
-git clone git@gitlab.wservices.ch:agents/cybersecurity/security-analyst.git
-hermes skills trust ./security-analyst
+export GITLAB_HOST=gitlab.wservices.ch
+hermes profile install "git@$GITLAB_HOST:agents/cybersecurity/security-analyst.git"
+hermes -p security-analyst chat              # run the analyst
+hermes profile update security-analyst       # re-pull later; keeps your .env/memory
 ```
 
-Shared skills are installed separately and pinned — see
-`agents/platform/docs/GITLAB-ARCHITECTURE.md`.
+On install, Hermes generates a `.env.EXAMPLE` from `distribution.yaml`'s
+`env_requires` (Wazuh/NVD vars). Copy it to `.env`, fill in your values, and
+forward the names into the Kali sandbox via `docker_forward_env`. `config.yaml`
+is **not** overwritten (your model/provider is preserved).
+
+Shared skills (`cve-research`, `security-tooling` under `skills/security/…`) are
+pinned and installed separately — see `agents/platform/docs/GITLAB-ARCHITECTURE.md`
+and `HERMES-INTEGRATION.md` §6 for the profile + shared-skill mechanism.
 
 ## Tests
 

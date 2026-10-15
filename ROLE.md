@@ -50,9 +50,9 @@ Shared skills consumed (pinned):
 
 | Shared skill | Source | Pin |
 |---|---|---|
-| `cve-research` | `agents/shared/cybersecurity/cve-research` | `v0.1.0` |
-| `security-tooling` | `agents/shared/cybersecurity/security-tooling` | `v0.1.0` |
-| `mitre-attack`, `security-osint`, `security-reporting` | `agents/shared/cybersecurity/*` | planned |
+| `cve-research` | `skills/security/cve-research` | `v0.1.0` |
+| `security-tooling` | `skills/security/security-tooling` | `v0.1.0` |
+| `mitre-attack`, `security-osint`, `security-reporting` | `skills/security/*` | planned |
 
 ## Required tools
 
